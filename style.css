@@ -7,10 +7,11 @@
     --Twitter: hsl(203, 89%, 53%);
     --Instagram: linear-gradient(90deg, hsl(37, 97%, 70%),hsl(329, 70%, 58%));
     --YouTube: hsl(348, 97%, 39%);
-    --Toggle: linear-gradient(hsl(210, 78%, 56%),hsl(146, 68%, 55));
+    --linear1:hsl(210, 78%, 56%);
+    --linear2:hsl(146, 68%, 55);
     --Toggle2: hsl(230, 22%, 74%);
     --Very-Dark-Blue-BG: hsl(230, 17%, 14%);
-    --Very-Dark-Blue-Top-BG-Pattern: hsl(232, 19%, 15%);
+    --Very-Dark-Blue-Top-BG-Pattern: hsl(233, 27%, 17%);
     --Dark-Desaturated-Blue-Card-BG: hsl(228, 28%, 20%);
     --Desaturated-Blue-Text: hsl(228, 34%, 66%);
     --White-Text: hsl(0, 0%, 100%);
@@ -21,6 +22,27 @@
     --Very-Dark-Blue-Text: hsl(230, 17%, 14%);
 }
 
+/* CLASS LIST SECTION RESPOND TO JAVASCRIPT TOGGLE */
+.dark-body{
+    background-color: var(--Very-Dark-Blue-BG);
+}
+.darkHeadCard{
+    background-color: var(--Very-Dark-Blue-Top-BG-Pattern);
+    color:var(--White-Text);
+}
+.text{
+    color:var(--White-Text);
+    font-size: 25px;
+}
+.darkCards{
+    background-color:var(--Dark-Desaturated-Blue-Card-BG);
+    color:var(--White-Text);
+    /* border:2px solid wheat; */
+}
+.h4Text{
+    color:var(--Dark-Grayish-Blue-Text);
+}
+
 *{
     margin:0;
     padding:0;
@@ -29,7 +51,7 @@
 
 body{
     background-color: var(--White-BG);
-    padding:10px;
+    padding:0px;
     text-align: center;
     font-family: 'Inter', sans-serif;
     position: relative;
@@ -41,6 +63,10 @@ header{
     border-radius:10px;
     text-align: left;
     width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 header h2{
@@ -54,16 +80,75 @@ header h4{
     color:var(--Dark-Grayish-Blue-Text);
 }
 
-header p{
+header .button{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-direction: row;
+    margin:0;
     padding:30px 0 100px;
     border-top:2px solid var(--Dark-Grayish-Blue-Text);
+    width:100%;
+}
+
+header .button p{
+    padding:0px 20px 0 0;
     color:var(--Dark-Grayish-Blue-Text);
     font-weight:800;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
 }
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width:40px;
+    height:20px;
+    margin:0 5px;
+    /* border:2px solid black;  */
+}
+
+.slider{
+    position: absolute;
+    cursor: pointer;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:lightgray;
+    border-radius: 34px;
+    transition:.4s;
+}
+
+.switch input{
+    display: block;
+    position: relative;
+    width:50px;
+    height:60px;
+    left:0px;
+    z-index:3;
+    opacity:0;
+}
+
+.slider:before{
+    position: absolute;
+    content:'';
+    height:15px;
+    width:15px;
+    left:5px;
+    bottom:3px;
+    background-color: #fff;
+    transition: .4s;
+    border-radius:50px;
+}
+
+input:checked + .slider{
+    background-image:linear-gradient(70deg, rgb(30, 145, 198), rgb(19, 136, 89));
+}
+
+input:checked + .slider:before{
+    transform: translateX(17px) ;
+}
+
+
 
 /* CONTAINER SECTION  */
 .container{
@@ -142,7 +227,9 @@ section:nth-child(4) .para2{
 }
 
 /* OVERVIEW SECTION */
-
+.overview{
+    margin:20px 0 0 10px;
+}
 .headerarticle{
     background: transparent;
     text-align: left;
@@ -150,7 +237,7 @@ section:nth-child(4) .para2{
     margin:0;
 }
 
-.headerarticle h2{
+.headerarticle .overviewHeader{
     color:var(--Dark-Grayish-Blue-Text);
     font-size:25px;
 }
@@ -158,6 +245,7 @@ section:nth-child(4) .para2{
 .overview section{
     border:none;
     margin:20px 0;
+    width:100%;
 }
 
 .overview section aside{
@@ -191,16 +279,18 @@ section:nth-child(4) .para2{
     header{
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: baseline;
+        flex-direction: row;
         width:95%;
         margin:10px 20px 30px;
         overflow-x: hidden;
         padding:20px 30px 100px;
     }
 
-    header p{
+    header .button{
         border:none;
-
+        width:auto;
+        align-items: center;
     }
 
     .container{
@@ -232,10 +322,11 @@ section:nth-child(4) .para2{
 
     .overview section{
         margin:15px 15px 0 0;
+        width: 20%;
     }
 }
 
-@media screen and (min-width:1300px) {
+@media screen and (min-width:1200px) {
 
     header{
         padding:20px 100px 100px; 
@@ -248,3 +339,4 @@ section:nth-child(4) .para2{
         margin:20px 0 0 100px;
     }
 }
+
